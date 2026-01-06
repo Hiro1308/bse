@@ -1,0 +1,615 @@
+name: bse
+description: "A new Flutter project."
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# In Windows, build-name is used as the major, minor, and patch parts
+# of the product and file versions while build-number is used as the build suffix.
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Supabase (compatible con Flutter 3.35.x)
+  supabase_flutter: ^2.8.2
+
+  # Routing moderno
+  go_router: ^14.8.0
+
+  # State management
+  flutter_riverpod: ^2.6.1
+
+  # Fechas / moneda
+  intl: ^0.20.0
+  flutter_dotenv: ^5.2.0
+
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  shared_preferences: ^2.2.3
+  path_provider: ^2.1.4
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^5.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+  uses-material-design: true
+  assets:
+    - .env
+    - assets/avatar/
+    - assets/avatar/arms/armour/plate/female/
+    - assets/avatar/arms/armour/plate/male/
+    - assets/avatar/arms/bracers/female/
+    - assets/avatar/arms/bracers/male/
+    - assets/avatar/arms/gloves/female/
+    - assets/avatar/arms/gloves/male/
+    - assets/avatar/arms/hands/ring/stud/female/
+    - assets/avatar/arms/hands/ring/stud/male/
+    - assets/avatar/beards/beard/
+    - assets/avatar/beards/mustache/
+    - assets/avatar/body/addons/tail/cat/adult/
+    - assets/avatar/body/addons/tail/cat/adult/bg/
+    - assets/avatar/body/addons/tail/cat/adult/fg/
+    - assets/avatar/body/addons/tail/fluffy/adult/
+    - assets/avatar/body/addons/tail/fluffy/adult/bg/
+    - assets/avatar/body/addons/tail/fluffy/adult/fg/
+    - assets/avatar/body/addons/tail/lizard/adult/
+    - assets/avatar/body/addons/tail/lizard/alt/adult/
+    - assets/avatar/body/addons/tail/wolf/adult/
+    - assets/avatar/body/addons/tail/wolf/adult/bg/
+    - assets/avatar/body/addons/tail/wolf/adult/fg/
+    - assets/avatar/body/addons/wings/bat/adult/
+    - assets/avatar/body/addons/wings/bat/lizard/adult/
+    - assets/avatar/body/addons/wings/feathered/adult/
+    - assets/avatar/body/addons/wings/lizard/adult/
+    - assets/avatar/body/addons/wings/lizard/alt/adult/
+    - assets/avatar/body/addons/wound/
+    - assets/avatar/body/base/female/
+    - assets/avatar/body/base/male/
+    - assets/avatar/dress/bodice/female/
+    - assets/avatar/dress/kimono/normal/trim/universal/female/
+    - assets/avatar/dress/kimono/normal/universal/female/
+    - assets/avatar/dress/kimono/split/trim/universal/female/
+    - assets/avatar/dress/kimono/split/universal/female/
+    - assets/avatar/dress/sash/female/
+    - assets/avatar/dress/slit/female/
+    - assets/avatar/eyes/cyclops/adult/
+    - assets/avatar/eyes/eyebrows/thick/adult/
+    - assets/avatar/eyes/eyebrows/thin/adult/
+    - assets/avatar/eyes/human/adult/anger/
+    - assets/avatar/eyes/human/adult/closing/
+    - assets/avatar/eyes/human/adult/default/
+    - assets/avatar/eyes/human/adult/eyeroll/
+    - assets/avatar/eyes/human/adult/look_l/
+    - assets/avatar/eyes/human/adult/look_r/
+    - assets/avatar/eyes/human/adult/neutral/
+    - assets/avatar/eyes/human/adult/sad/
+    - assets/avatar/eyes/human/adult/sad2/
+    - assets/avatar/eyes/human/adult/shame/
+    - assets/avatar/eyes/human/adult/shock/
+    - assets/avatar/eyes/human/elderly/anger/
+    - assets/avatar/eyes/human/elderly/closing/
+    - assets/avatar/eyes/human/elderly/default/
+    - assets/avatar/eyes/human/elderly/look_l/
+    - assets/avatar/eyes/human/elderly/look_r/
+    - assets/avatar/eyes/human/elderly/roll_eyes/
+    - assets/avatar/eyes/human/elderly/sad/
+    - assets/avatar/eyes/human/elderly/shame/
+    - assets/avatar/eyes/human/elderly/shock/
+    - assets/avatar/facial/earrings/simple/left/adult/
+    - assets/avatar/facial/earrings/simple/right/adult/
+    - assets/avatar/facial/glasses/glasses/adult/
+    - assets/avatar/facial/glasses/halfmoon/adult/
+    - assets/avatar/facial/glasses/nerd/adult/
+    - assets/avatar/facial/glasses/round/adult/
+    - assets/avatar/facial/glasses/secretary/adult/
+    - assets/avatar/facial/glasses/shades/adult/
+    - assets/avatar/facial/glasses/sunglasses/adult/
+    - assets/avatar/facial/masks/plain/
+    - assets/avatar/facial/monocle/left/adult/
+    - assets/avatar/facial/monocle/left/frame/adult/
+    - assets/avatar/facial/monocle/right/adult/
+    - assets/avatar/facial/monocle/right/frame/adult/
+    - assets/avatar/facial/patches/eyepatch2/left/adult/
+    - assets/avatar/facial/patches/eyepatch2/right/adult/
+    - assets/avatar/facial/patches/eyepatch/ambi/adult/
+    - assets/avatar/facial/patches/eyepatch/left/adult/
+    - assets/avatar/facial/patches/eyepatch/right/adult/
+    - assets/avatar/facial/patches/small/left/adult/
+    - assets/avatar/facial/patches/small/right/adult/
+    - assets/avatar/feet/armour/plate/female/
+    - assets/avatar/feet/armour/plate/male/
+    - assets/avatar/feet/boots/basic/male/
+    - assets/avatar/feet/boots/basic/thin/
+    - assets/avatar/feet/boots/fold/male/
+    - assets/avatar/feet/boots/fold/thin/
+    - assets/avatar/feet/boots/revised/male/
+    - assets/avatar/feet/boots/revised/thin/
+    - assets/avatar/feet/boots/rimmed/male/
+    - assets/avatar/feet/boots/rimmed/thin/
+    - assets/avatar/feet/hoofs/female/
+    - assets/avatar/feet/hoofs/male/
+    - assets/avatar/feet/sandals/male/
+    - assets/avatar/feet/sandals/thin/
+    - assets/avatar/feet/shoes/basic/male/
+    - assets/avatar/feet/shoes/basic/thin/
+    - assets/avatar/feet/shoes/ghillies/male/
+    - assets/avatar/feet/shoes/ghillies/thin/
+    - assets/avatar/feet/shoes/revised/male/
+    - assets/avatar/feet/shoes/revised/thin/
+    - assets/avatar/feet/shoes/sara/male/
+    - assets/avatar/feet/shoes/sara/thin/
+    - assets/avatar/feet/slippers/male/
+    - assets/avatar/feet/slippers/thin/
+    - assets/avatar/feet/socks/ankle/male/
+    - assets/avatar/feet/socks/ankle/thin/
+    - assets/avatar/feet/socks/high/male/
+    - assets/avatar/feet/socks/high/thin/
+    - assets/avatar/feet/socks/tabi/male/
+    - assets/avatar/feet/socks/tabi/thin/
+    - assets/avatar/hair/afro/adult/
+    - assets/avatar/hair/balding/adult/
+    - assets/avatar/hair/bangs/adult/
+    - assets/avatar/hair/bangs_bun/adult/
+    - assets/avatar/hair/bangslong2/adult/bg/
+    - assets/avatar/hair/bangslong2/adult/fg/
+    - assets/avatar/hair/bangslong/adult/
+    - assets/avatar/hair/bangsshort/adult/
+    - assets/avatar/hair/bedhead/adult/
+    - assets/avatar/hair/bob/adult/
+    - assets/avatar/hair/bob_side_part/adult/
+    - assets/avatar/hair/braid2/adult/bg/
+    - assets/avatar/hair/braid2/adult/fg/
+    - assets/avatar/hair/braid/adult/bg/
+    - assets/avatar/hair/braid/adult/fg/
+    - assets/avatar/hair/bunches/adult/bg/
+    - assets/avatar/hair/bunches/adult/fg/
+    - assets/avatar/hair/buzzcut/adult/
+    - assets/avatar/hair/cornrows/adult/
+    - assets/avatar/hair/cowlick/adult/
+    - assets/avatar/hair/cowlick_tall/adult/
+    - assets/avatar/hair/curls_large/adult/bg/
+    - assets/avatar/hair/curls_large/adult/fg/
+    - assets/avatar/hair/curls_large_xlong/adult/bg/
+    - assets/avatar/hair/curls_large_xlong/adult/fg/
+    - assets/avatar/hair/curly_long/adult/
+    - assets/avatar/hair/curly_short2/adult/
+    - assets/avatar/hair/curly_short/adult/
+    - assets/avatar/hair/curtains/adult/
+    - assets/avatar/hair/curtains_long/adult/
+    - assets/avatar/hair/dreadlocks_long/adult/
+    - assets/avatar/hair/dreadlocks_short/adult/
+    - assets/avatar/hair/extensions/bangs/braidl/adult/
+    - assets/avatar/hair/extensions/bangs/braidr/adult/
+    - assets/avatar/hair/extensions/bangs/long_straightl/adult/
+    - assets/avatar/hair/extensions/bangs/long_straightr/adult/
+    - assets/avatar/hair/extensions/bangs/long_wavyl/adult/
+    - assets/avatar/hair/extensions/bangs/long_wavyr/adult/
+    - assets/avatar/hair/extensions/bangs/xlong_bangl/adult/
+    - assets/avatar/hair/extensions/bangs/xlong_bangr/adult/
+    - assets/avatar/hair/extensions/bangs/xlong_braidl/adult/
+    - assets/avatar/hair/extensions/bangs/xlong_braidr/adult/
+    - assets/avatar/hair/extensions/bangs/xlong_curlyl/adult/
+    - assets/avatar/hair/extensions/bangs/xlong_curlyr/adult/
+    - assets/avatar/hair/extensions/bangs/xlong_wavyl/adult/
+    - assets/avatar/hair/extensions/bangs/xlong_wavyr/adult/
+    - assets/avatar/hair/extensions/ponytails/relm_ponytail/adult/bg/
+    - assets/avatar/hair/extensions/ponytails/relm_ponytail/adult/fg/
+    - assets/avatar/hair/extensions/ponytails/topknot_long/adult/
+    - assets/avatar/hair/extensions/ponytails/topknot_short/adult/
+    - assets/avatar/hair/extensions/ties/high_bun/adult/
+    - assets/avatar/hair/flat_top_fade/adult/
+    - assets/avatar/hair/flat_top_straight/adult/
+    - assets/avatar/hair/half_up/adult/
+    - assets/avatar/hair/halfmessy/adult/
+    - assets/avatar/hair/high_and_tight/adult/
+    - assets/avatar/hair/high_ponytail/adult/bg/
+    - assets/avatar/hair/high_ponytail/adult/fg/
+    - assets/avatar/hair/idol/adult/
+    - assets/avatar/hair/jewfro/adult/
+    - assets/avatar/hair/lob/adult/
+    - assets/avatar/hair/long/adult/
+    - assets/avatar/hair/long_band/adult/bg/
+    - assets/avatar/hair/long_band/adult/fg/
+    - assets/avatar/hair/long_center_part/adult/bg/
+    - assets/avatar/hair/long_center_part/adult/fg/
+    - assets/avatar/hair/long_messy2/adult/
+    - assets/avatar/hair/long_messy/adult/
+    - assets/avatar/hair/long_straight/adult/
+    - assets/avatar/hair/long_tied/adult/bg/
+    - assets/avatar/hair/long_tied/adult/fg/
+    - assets/avatar/hair/longhawk/adult/
+    - assets/avatar/hair/loose/adult/
+    - assets/avatar/hair/messy1/adult/
+    - assets/avatar/hair/messy2/adult/
+    - assets/avatar/hair/messy3/adult/
+    - assets/avatar/hair/mop/adult/
+    - assets/avatar/hair/natural/adult/
+    - assets/avatar/hair/page2/adult/
+    - assets/avatar/hair/page/adult/
+    - assets/avatar/hair/parted2/adult/
+    - assets/avatar/hair/parted3/adult/
+    - assets/avatar/hair/parted/adult/
+    - assets/avatar/hair/parted_side_bangs2/adult/
+    - assets/avatar/hair/parted_side_bangs/adult/
+    - assets/avatar/hair/pigtails/adult/
+    - assets/avatar/hair/pigtails_bangs/adult/
+    - assets/avatar/hair/pixie/adult/
+    - assets/avatar/hair/plain/adult/
+    - assets/avatar/hair/ponytail2/adult/bg/
+    - assets/avatar/hair/ponytail2/adult/fg/
+    - assets/avatar/hair/ponytail/adult/bg/
+    - assets/avatar/hair/ponytail/adult/fg/
+    - assets/avatar/hair/princess/adult/bg/
+    - assets/avatar/hair/princess/adult/fg/
+    - assets/avatar/hair/relm_ponytail/adult/bg/
+    - assets/avatar/hair/relm_ponytail/adult/fg/
+    - assets/avatar/hair/relm_ponytail/adult/mg/
+    - assets/avatar/hair/relm_short/adult/
+    - assets/avatar/hair/relm_xlong/adult/bg/
+    - assets/avatar/hair/relm_xlong/adult/fg/
+    - assets/avatar/hair/sara/adult/bg/
+    - assets/avatar/hair/sara/adult/fg/
+    - assets/avatar/hair/shorthawk/adult/
+    - assets/avatar/hair/shoulderl/adult/bg/
+    - assets/avatar/hair/shoulderl/adult/fg/
+    - assets/avatar/hair/shoulderr/adult/bg/
+    - assets/avatar/hair/shoulderr/adult/fg/
+    - assets/avatar/hair/single/adult/bg/
+    - assets/avatar/hair/single/adult/fg/
+    - assets/avatar/hair/spiked2/adult/
+    - assets/avatar/hair/spiked/adult/
+    - assets/avatar/hair/spiked_beehive/adult/
+    - assets/avatar/hair/spiked_liberty2/adult/
+    - assets/avatar/hair/spiked_liberty/adult/
+    - assets/avatar/hair/spiked_porcupine/adult/
+    - assets/avatar/hair/swoop/adult/
+    - assets/avatar/hair/swoop_side/adult/
+    - assets/avatar/hair/twists_fade/adult/
+    - assets/avatar/hair/twists_straight/adult/
+    - assets/avatar/hair/unkempt/adult/
+    - assets/avatar/hair/wavy/adult/bg/
+    - assets/avatar/hair/wavy/adult/fg/
+    - assets/avatar/hair/xlong/adult/bg/
+    - assets/avatar/hair/xlong/adult/fg/
+    - assets/avatar/hair/xlong_wavy/adult/bg/
+    - assets/avatar/hair/xlong_wavy/adult/fg/
+    - assets/avatar/hat/cloth/bandana2/adult/
+    - assets/avatar/hat/cloth/bandana/adult/
+    - assets/avatar/hat/cloth/hijab/male/
+    - assets/avatar/hat/cloth/hijab/thin/
+    - assets/avatar/hat/cloth/leather_cap/adult/
+    - assets/avatar/hat/cloth/leather_cap/feather/
+    - assets/avatar/hat/formal/bowler/adult/
+    - assets/avatar/hat/formal/crown/adult/
+    - assets/avatar/hat/formal/tiara/adult/
+    - assets/avatar/hat/formal/tophat/adult/
+    - assets/avatar/hat/headband/hairtie/adult/
+    - assets/avatar/hat/headband/hairtie/rune/adult/
+    - assets/avatar/hat/headband/thick/adult/
+    - assets/avatar/hat/headband/thick/rune/adult/
+    - assets/avatar/hat/headband/tied/adult/
+    - assets/avatar/hat/helmet/armet/adult/
+    - assets/avatar/hat/helmet/armet_simple/adult/
+    - assets/avatar/hat/helmet/barbarian/adult/
+    - assets/avatar/hat/helmet/barbarian_nasal/adult/
+    - assets/avatar/hat/helmet/barbarian_viking/adult/
+    - assets/avatar/hat/helmet/barbuta/female/
+    - assets/avatar/hat/helmet/barbuta/male/
+    - assets/avatar/hat/helmet/barbuta_simple/adult/
+    - assets/avatar/hat/helmet/bascinet/adult/
+    - assets/avatar/hat/helmet/bascinet_round/adult/
+    - assets/avatar/hat/helmet/close/female/
+    - assets/avatar/hat/helmet/close/male/
+    - assets/avatar/hat/helmet/flattop/female/
+    - assets/avatar/hat/helmet/flattop/male/
+    - assets/avatar/hat/helmet/greathelm/female/
+    - assets/avatar/hat/helmet/greathelm/male/
+    - assets/avatar/hat/helmet/horned/adult/
+    - assets/avatar/hat/helmet/kettle/adult/
+    - assets/avatar/hat/helmet/legion/adult/
+    - assets/avatar/hat/helmet/mail/adult/
+    - assets/avatar/hat/helmet/maximus/adult/
+    - assets/avatar/hat/helmet/morion/adult/
+    - assets/avatar/hat/helmet/nasal/adult/
+    - assets/avatar/hat/helmet/norman/adult/
+    - assets/avatar/hat/helmet/pointed/adult/
+    - assets/avatar/hat/helmet/spangenhelm/adult/
+    - assets/avatar/hat/helmet/spangenhelm_viking/adult/
+    - assets/avatar/hat/helmet/sugarloaf/female/
+    - assets/avatar/hat/helmet/sugarloaf/male/
+    - assets/avatar/hat/helmet/sugarloaf_simple/female/
+    - assets/avatar/hat/helmet/sugarloaf_simple/male/
+    - assets/avatar/hat/helmet/xeon/adult/
+    - assets/avatar/hat/holiday/christmas/adult/
+    - assets/avatar/hat/magic/celestial/adult/
+    - assets/avatar/hat/magic/celestial/trim/adult/
+    - assets/avatar/hat/magic/celestial_moon/adult/
+    - assets/avatar/hat/magic/celestial_moon/trim/adult/
+    - assets/avatar/hat/magic/large/adult/
+    - assets/avatar/hat/magic/wizard/base/adult/
+    - assets/avatar/hat/magic/wizard/belt/adult/
+    - assets/avatar/hat/magic/wizard/buckle/adult/
+    - assets/avatar/hat/pirate/bandana/adult/
+    - assets/avatar/hat/pirate/bandana/skull/adult/
+    - assets/avatar/hat/pirate/bicorne/athwart/admiral/
+    - assets/avatar/hat/pirate/bicorne/athwart/basic/adult/
+    - assets/avatar/hat/pirate/bicorne/athwart/basic/skull/
+    - assets/avatar/hat/pirate/bicorne/athwart/captain/
+    - assets/avatar/hat/pirate/bicorne/athwart/commodore/
+    - assets/avatar/hat/pirate/bicorne/foreaft/adult/
+    - assets/avatar/hat/pirate/bicorne/foreaft/commodore/
+    - assets/avatar/hat/pirate/cavalier/adult/
+    - assets/avatar/hat/pirate/cavalier/feather/adult/
+    - assets/avatar/hat/pirate/kerchief/adult/
+    - assets/avatar/hat/pirate/tricorne/basic/adult/
+    - assets/avatar/hat/pirate/tricorne/basic/stitching/adult/
+    - assets/avatar/hat/pirate/tricorne/basic/thatching/adult/
+    - assets/avatar/hat/pirate/tricorne/captain/
+    - assets/avatar/hat/pirate/tricorne/lieutenant/
+    - assets/avatar/hat/visor/grated/adult/
+    - assets/avatar/hat/visor/grated_narrow/adult/
+    - assets/avatar/hat/visor/horned/adult/
+    - assets/avatar/hat/visor/pigface/adult/
+    - assets/avatar/hat/visor/pigface_raised/adult/
+    - assets/avatar/hat/visor/round/adult/
+    - assets/avatar/hat/visor/round_raised/adult/
+    - assets/avatar/hat/visor/slit/adult/
+    - assets/avatar/hat/visor/slit_narrow/adult/
+    - assets/avatar/head/addons/fins/fin/adult/
+    - assets/avatar/head/addons/fins/fin_short/adult/
+    - assets/avatar/head/addons/horns/backwards/adult/
+    - assets/avatar/head/addons/horns/curled/adult/
+    - assets/avatar/head/heads/alien/adult/
+    - assets/avatar/head/heads/boarman/adult/
+    - assets/avatar/head/heads/frankenstein/adult/
+    - assets/avatar/head/heads/goblin/adult/
+    - assets/avatar/head/heads/human/elderly_small/
+    - assets/avatar/head/heads/human/female/
+    - assets/avatar/head/heads/human/female_elderly/
+    - assets/avatar/head/heads/human/female_small/
+    - assets/avatar/head/heads/human/male/
+    - assets/avatar/head/heads/human/male_elderly/
+    - assets/avatar/head/heads/human/male_gaunt/
+    - assets/avatar/head/heads/human/male_plump/
+    - assets/avatar/head/heads/human/male_small/
+    - assets/avatar/head/heads/jack/adult/
+    - assets/avatar/head/heads/lizard/female/
+    - assets/avatar/head/heads/lizard/male/
+    - assets/avatar/head/heads/minotaur/female/
+    - assets/avatar/head/heads/minotaur/male/
+    - assets/avatar/head/heads/mouse/adult/
+    - assets/avatar/head/heads/orc/female/
+    - assets/avatar/head/heads/orc/male/
+    - assets/avatar/head/heads/pig/adult/
+    - assets/avatar/head/heads/rabbit/adult/
+    - assets/avatar/head/heads/rat/adult/
+    - assets/avatar/head/heads/sheep/adult/
+    - assets/avatar/head/heads/skeleton/
+    - assets/avatar/head/heads/troll/adult/
+    - assets/avatar/head/heads/vampire/adult/
+    - assets/avatar/head/heads/wartotaur/adult/
+    - assets/avatar/head/heads/wolf/female/
+    - assets/avatar/head/heads/wolf/male/
+    - assets/avatar/head/heads/zombie/adult/
+    - assets/avatar/legs/armour/plate/male/
+    - assets/avatar/legs/armour/plate/thin/
+    - assets/avatar/legs/cuffed/male/
+    - assets/avatar/legs/cuffed/thin/
+    - assets/avatar/legs/formal/male/
+    - assets/avatar/legs/formal/thin/
+    - assets/avatar/legs/formal_striped/male/
+    - assets/avatar/legs/formal_striped/thin/
+    - assets/avatar/legs/fur/male/
+    - assets/avatar/legs/fur/thin/
+    - assets/avatar/legs/hose/male/
+    - assets/avatar/legs/hose/thin/
+    - assets/avatar/legs/leggings2/male/
+    - assets/avatar/legs/leggings2/thin/
+    - assets/avatar/legs/leggings/male/
+    - assets/avatar/legs/leggings/thin/
+    - assets/avatar/legs/pantaloons/male/
+    - assets/avatar/legs/pantaloons/muscular/
+    - assets/avatar/legs/pantaloons/thin/
+    - assets/avatar/legs/pants2/male/
+    - assets/avatar/legs/pants2/thin/
+    - assets/avatar/legs/pants/male/
+    - assets/avatar/legs/pants/muscular/
+    - assets/avatar/legs/pants/thin/
+    - assets/avatar/legs/shorts/short_shorts/male/
+    - assets/avatar/legs/shorts/short_shorts/thin/
+    - assets/avatar/legs/shorts/shorts/male/
+    - assets/avatar/legs/shorts/shorts/thin/
+    - assets/avatar/shield/heater/original/paint/
+    - assets/avatar/shield/heater/original/pattern/barry/
+    - assets/avatar/shield/heater/original/pattern/bend/
+    - assets/avatar/shield/heater/original/pattern/bend_sinister/
+    - assets/avatar/shield/heater/original/pattern/bendy/
+    - assets/avatar/shield/heater/original/pattern/bendy_sinister/
+    - assets/avatar/shield/heater/original/pattern/bordure/
+    - assets/avatar/shield/heater/original/pattern/chevron/
+    - assets/avatar/shield/heater/original/pattern/chevron_inverted/
+    - assets/avatar/shield/heater/original/pattern/chief/
+    - assets/avatar/shield/heater/original/pattern/cross/
+    - assets/avatar/shield/heater/original/pattern/fess/
+    - assets/avatar/shield/heater/original/pattern/lozengy/
+    - assets/avatar/shield/heater/original/pattern/pale/
+    - assets/avatar/shield/heater/original/pattern/pall/
+    - assets/avatar/shield/heater/original/pattern/paly/
+    - assets/avatar/shield/heater/original/pattern/per_bend/
+    - assets/avatar/shield/heater/original/pattern/per_bend_sinister/
+    - assets/avatar/shield/heater/original/pattern/per_chevron/
+    - assets/avatar/shield/heater/original/pattern/per_chevron_inverted/
+    - assets/avatar/shield/heater/original/pattern/per_fess/
+    - assets/avatar/shield/heater/original/pattern/per_pale/
+    - assets/avatar/shield/heater/original/pattern/per_saltire/
+    - assets/avatar/shield/heater/original/pattern/quarterly/
+    - assets/avatar/shield/heater/original/pattern/saltire/
+    - assets/avatar/shield/heater/original/trim/
+    - assets/avatar/shield/heater/original/wood/
+    - assets/avatar/shield/heater/revised/paint/
+    - assets/avatar/shield/heater/revised/pattern/barry/
+    - assets/avatar/shield/heater/revised/pattern/bend/
+    - assets/avatar/shield/heater/revised/pattern/bend_sinister/
+    - assets/avatar/shield/heater/revised/pattern/bendy/
+    - assets/avatar/shield/heater/revised/pattern/bendy_sinister/
+    - assets/avatar/shield/heater/revised/pattern/bordure/
+    - assets/avatar/shield/heater/revised/pattern/chevron/
+    - assets/avatar/shield/heater/revised/pattern/chevron_inverted/
+    - assets/avatar/shield/heater/revised/pattern/chief/
+    - assets/avatar/shield/heater/revised/pattern/cross/
+    - assets/avatar/shield/heater/revised/pattern/fess/
+    - assets/avatar/shield/heater/revised/pattern/lozengy/
+    - assets/avatar/shield/heater/revised/pattern/pale/
+    - assets/avatar/shield/heater/revised/pattern/pall/
+    - assets/avatar/shield/heater/revised/pattern/paly/
+    - assets/avatar/shield/heater/revised/pattern/per_bend/
+    - assets/avatar/shield/heater/revised/pattern/per_bend_sinister/
+    - assets/avatar/shield/heater/revised/pattern/per_chevron/
+    - assets/avatar/shield/heater/revised/pattern/per_chevron_inverted/
+    - assets/avatar/shield/heater/revised/pattern/per_fess/
+    - assets/avatar/shield/heater/revised/pattern/per_pale/
+    - assets/avatar/shield/heater/revised/pattern/per_saltire/
+    - assets/avatar/shield/heater/revised/pattern/quarterly/
+    - assets/avatar/shield/heater/revised/pattern/saltire/
+    - assets/avatar/shield/heater/revised/trim/
+    - assets/avatar/shield/heater/revised/wood/
+    - assets/avatar/shoulders/epaulets/male/
+    - assets/avatar/shoulders/leather/female/
+    - assets/avatar/shoulders/leather/male/
+    - assets/avatar/shoulders/legion/female/
+    - assets/avatar/shoulders/legion/male/
+    - assets/avatar/shoulders/mantal/male/
+    - assets/avatar/shoulders/plate/female/
+    - assets/avatar/shoulders/plate/male/
+    - assets/avatar/torso/aprons/overalls/female/
+    - assets/avatar/torso/aprons/overalls/male/
+    - assets/avatar/torso/aprons/suspenders/female/
+    - assets/avatar/torso/aprons/suspenders/male/
+    - assets/avatar/torso/armour/legion/female/
+    - assets/avatar/torso/armour/legion/male/
+    - assets/avatar/torso/armour/plate/female/
+    - assets/avatar/torso/armour/plate/male/
+    - assets/avatar/torso/clothes/longsleeve/longsleeve2/female/
+    - assets/avatar/torso/clothes/longsleeve/longsleeve2/male/
+    - assets/avatar/torso/clothes/longsleeve/longsleeve2_buttoned/female/
+    - assets/avatar/torso/clothes/longsleeve/longsleeve2_buttoned/male/
+    - assets/avatar/torso/clothes/longsleeve/longsleeve2_cardigan/female/
+    - assets/avatar/torso/clothes/longsleeve/longsleeve2_cardigan/male/
+    - assets/avatar/torso/clothes/longsleeve/longsleeve2_polo/female/
+    - assets/avatar/torso/clothes/longsleeve/longsleeve2_polo/male/
+    - assets/avatar/torso/clothes/longsleeve/longsleeve2_scoop/female/
+    - assets/avatar/torso/clothes/longsleeve/longsleeve2_scoop/male/
+    - assets/avatar/torso/clothes/longsleeve/longsleeve2_vneck/female/
+    - assets/avatar/torso/clothes/longsleeve/longsleeve2_vneck/male/
+    - assets/avatar/torso/clothes/longsleeve/longsleeve/female/
+    - assets/avatar/torso/clothes/longsleeve/longsleeve/male/
+    - assets/avatar/torso/clothes/longsleeve/longsleeves2/female/
+    - assets/avatar/torso/clothes/longsleeve/longsleeves2/male/
+    - assets/avatar/torso/clothes/longsleeve/longsleeves/female/
+    - assets/avatar/torso/clothes/longsleeve/longsleeves/male/
+    - assets/avatar/torso/clothes/longsleeve/longsleeves_cuffed/female/
+    - assets/avatar/torso/clothes/longsleeve/longsleeves_cuffed/male/
+    - assets/avatar/torso/clothes/longsleeve/scoop/female/
+    - assets/avatar/torso/clothes/longsleeve/scoop/male/
+    - assets/avatar/torso/clothes/shortsleeve/shortsleeve/female/
+    - assets/avatar/torso/clothes/shortsleeve/shortsleeve/male/
+    - assets/avatar/torso/clothes/shortsleeve/shortsleeve_cardigan/female/
+    - assets/avatar/torso/clothes/shortsleeve/shortsleeve_cardigan/male/
+    - assets/avatar/torso/clothes/shortsleeve/shortsleeve_polo/female/
+    - assets/avatar/torso/clothes/shortsleeve/shortsleeve_polo/male/
+    - assets/avatar/torso/clothes/shortsleeve/shortsleeves2/female/
+    - assets/avatar/torso/clothes/shortsleeve/shortsleeves2/male/
+    - assets/avatar/torso/clothes/shortsleeve/shortsleeves/female/
+    - assets/avatar/torso/clothes/shortsleeve/shortsleeves/male/
+    - assets/avatar/torso/clothes/shortsleeve/tshirt/female/
+    - assets/avatar/torso/clothes/shortsleeve/tshirt/male/
+    - assets/avatar/torso/clothes/shortsleeve/tshirt_buttoned/female/
+    - assets/avatar/torso/clothes/shortsleeve/tshirt_buttoned/male/
+    - assets/avatar/torso/clothes/shortsleeve/tshirt_scoop/female/
+    - assets/avatar/torso/clothes/shortsleeve/tshirt_scoop/male/
+    - assets/avatar/torso/clothes/shortsleeve/tshirt_vneck/female/
+    - assets/avatar/torso/clothes/shortsleeve/tshirt_vneck/male/
+    - assets/avatar/torso/clothes/sleeveless/sleeveless1/female/
+    - assets/avatar/torso/clothes/sleeveless/sleeveless1/male/
+    - assets/avatar/torso/clothes/sleeveless/sleeveless2/female/
+    - assets/avatar/torso/clothes/sleeveless/sleeveless2/male/
+    - assets/avatar/torso/clothes/sleeveless/sleeveless2_buttoned/female/
+    - assets/avatar/torso/clothes/sleeveless/sleeveless2_buttoned/male/
+    - assets/avatar/torso/clothes/sleeveless/sleeveless2_cardigan/female/
+    - assets/avatar/torso/clothes/sleeveless/sleeveless2_cardigan/male/
+    - assets/avatar/torso/clothes/sleeveless/sleeveless2_polo/female/
+    - assets/avatar/torso/clothes/sleeveless/sleeveless2_polo/male/
+    - assets/avatar/torso/clothes/sleeveless/sleeveless2_scoop/female/
+    - assets/avatar/torso/clothes/sleeveless/sleeveless2_scoop/male/
+    - assets/avatar/torso/clothes/sleeveless/sleeveless2_vneck/female/
+    - assets/avatar/torso/clothes/sleeveless/sleeveless2_vneck/male/
+    - assets/avatar/torso/clothes/vest/male/
+    - assets/avatar/torso/clothes/vest_open/male/
+    - assets/avatar/torso/waist/obi/knot/left/male/
+    - assets/avatar/torso/waist/obi/knot/left/thin/
+    - assets/avatar/torso/waist/obi/knot/right/male/
+    - assets/avatar/torso/waist/obi/knot/right/thin/
+    - assets/avatar/torso/waist/obi/male/
+    - assets/avatar/torso/waist/obi/thin/
+    - assets/avatar_manifest.json
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/to/resolution-aware-images
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/to/asset-from-package
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/to/font-from-package
